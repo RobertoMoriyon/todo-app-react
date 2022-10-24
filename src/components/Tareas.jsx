@@ -2,7 +2,7 @@ import Compleatadas from './Compleatadas'
 import PorHacer from './PorHacer'
 
 
-const Tareas = ({tasks, setTasks, eliminaTarea}) => {
+const Tareas = ({tasks, setTasks, eliminaTarea, setTarea}) => {
   return (
     <div className='flex mt-10 m-5'>
         <div className='w-1/2'>
@@ -12,6 +12,7 @@ const Tareas = ({tasks, setTasks, eliminaTarea}) => {
                 key={task.id}
                 task={task}
                 eliminaTarea ={eliminaTarea}
+                setTarea = {setTarea}
               />
 
             ))

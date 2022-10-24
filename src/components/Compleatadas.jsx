@@ -1,11 +1,12 @@
-const Compleatadas = ({task,eliminaTarea}) => {
+const Compleatadas = ({task,eliminaTarea,setTarea}) => {
 
-  // const {task, id} = task --> NO FUNCIONA, revisar opciones
+  const {nombre, id} = task
+ // console.log(task)
 
   const handleEliminar = () => {
     const respuesta = confirm('Deseas eliminar la tarea?')
     if (respuesta){
-        eliminaTarea(task.id)
+        eliminaTarea(id)
     }
   }
 
@@ -13,11 +14,14 @@ const Compleatadas = ({task,eliminaTarea}) => {
     <div className="bg-white rounded-md flex justify-between m-2 p-2">
         <div className='mt-1 mb-1'>     
             <p className='ml-3'>
-                {task.task}
+                {nombre}
             </p>
         </div>
         <div className='mt-2'>
-            <button className='mr-2'>
+            <button 
+                className='mr-2'
+                onClick={()=> setTarea(task)}
+            >
                 <img src="./public/task.svg" alt="" />
             </button>
             <button

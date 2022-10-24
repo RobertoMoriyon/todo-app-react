@@ -1,10 +1,17 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Error from './Error'
 
-const Formulario = ({tasks, setTasks}) => {
+const Formulario = ({tasks, setTasks, tarea, setTarea}) => {
   
+  const [nombre, setNombre] = useState('')
   const [task, setTask] = useState('')
   const [error, setError] = useState(false)
+
+  useEffect(() => {
+    if(Object.keys(tarea).length>0){
+      setNombre(tarea.nombre)
+    }
+  },[tarea])
 
   const generarId = () => {
     const random = Math.random().toString(36).substring(2)
@@ -17,27 +24,31 @@ const Formulario = ({tasks, setTasks}) => {
     e.preventDefault()
     
     // Validate that the form is not empty
-    if (task == ''){
-      console.log('Task empty')
+    if (nombre == ''){
       setError(true)
       return
     }
     setError(false)
-    console.log(task, 'task')
-
-    // Creamos el objeto tarea
+  
+    // Building the Object of the task, with name and id when needed.
     const objetoTarea = {
-      task
+      nombre
     }
 
-    objetoTarea.id = generarId()
+    if (tarea.id) {
+      objetoTarea.id = tarea.id
+      //console.log(objetoTarea.nombre)
+      const tasksUpdated = tasks.map(tasksState => tasksState.id === tarea.id ? objetoTarea: tasksState)
+      setTasks(tasksUpdated)
+      setTarea({})
 
-    // Adding new task to the list of tasks
-    setTasks([...tasks, objetoTarea])
-    console.log(tasks)
-
-      // Reiniciamos el formulario
-    setTask('')
+    } else {
+      objetoTarea.id = generarId()
+      // Adding new task to the list of tasks
+      setTasks([...tasks, objetoTarea])  
+    }
+    // Reiniciamos el formulario
+    setNombre('')
   }
 
   return (
@@ -50,17 +61,17 @@ const Formulario = ({tasks, setTasks}) => {
             >
               <div className='flex'>
                 <input
-                    id='task'
+                    id='nombre'
                     type="text" 
                     className='w-full border-2 p-2 mt-2 rounded-md placeholder-gray-400 mr-2'
                     placeholder="Place your task to-do here"
-                    value={task}
-                    onChange={ (e) => setTask(e.target.value)}
+                    value={nombre}
+                    onChange={ (e) => setNombre(e.target.value)}
                 />
                 <input 
                     type="submit"
-                    value="add"
-                    className='bg-emerald-600 font-bold uppercase text-white rounded-md p-2 mt-2 hover:bg-emerald-700 cursor-pointer transition-all'
+                    value={tarea.id ? "Edit" : "add"}
+                    className={tarea.id ? 'bg-yellow-600 font-bold uppercase text-white rounded-md p-2 mt-2 hover:bg-yellow-700 cursor-pointer transition-all':'bg-emerald-600 font-bold uppercase text-white rounded-md p-2 mt-2 hover:bg-emerald-700 cursor-pointer transition-all'}
                 />
               </div>
               {error && <Error />}

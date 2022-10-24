@@ -6,10 +6,11 @@ import Tareas from './components/Tareas'
 function App() {
 
   const [tasks, setTasks] = useState([])
+  const [tarea, setTarea] = useState({})
 
   const eliminaTarea = id => {
-    const tareasActualizadas = tasks.filter(tarea => tarea.id !== id)
-    setTasks(tareasActualizadas)
+    const tasksUpdated = tasks.filter(tarea => tarea.id !== id)
+    setTasks(tasksUpdated)
   }
   
   return (
@@ -18,10 +19,13 @@ function App() {
       <Formulario 
         tasks = {tasks}
         setTasks = {setTasks}
+        tarea = {tarea}
+        setTarea = {setTarea}
       />
       <Tareas 
         tasks = {tasks}
         setTasks = {setTasks}
+        setTarea = {setTarea}
         eliminaTarea = {eliminaTarea}
       />
     </div>
