@@ -18,7 +18,7 @@ const PorHacer = ({tasksCompleted, setTasksCompleted, taskComplete, undoTarea}) 
             <button
                 onClick={handleUndo}
             >
-                <img src="./src/assets/reset.svg" alt="" />
+                <img src="./assets/reset.svg" alt="" />
             </button>
         </div>
     </div>
