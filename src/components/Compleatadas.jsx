@@ -27,18 +27,18 @@ const Compleatadas = ({task,eliminaTarea,setTarea, completarTarea}) => {
                 className='mr-2'
                 onClick={handleCompletar}
             >
-                <img src="./public/task.svg" alt="" />
+                <img src="./src/assets/task.svg" alt="" />
             </button>
             <button
                 className='mr-2'
                 onClick={()=> setTarea(task)}
             >
-                <img src="./public/edit.svg" alt="" />
+                <img src="./src/assets/edit.svg" alt="" />
             </button>
             <button
                 onClick={handleEliminar}
             >
-                <img src="./public/trash.svg" alt="" />
+                <img src="./src/assets/trash.svg" alt="" />
             </button>
             {/* <!--
             <button
