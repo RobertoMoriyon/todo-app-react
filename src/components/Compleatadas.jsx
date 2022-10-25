@@ -1,4 +1,4 @@
-const Compleatadas = ({task,eliminaTarea,setTarea}) => {
+const Compleatadas = ({task,eliminaTarea,setTarea, completarTarea}) => {
 
   const {nombre, id} = task
  // console.log(task)
@@ -8,6 +8,11 @@ const Compleatadas = ({task,eliminaTarea,setTarea}) => {
     if (respuesta){
         eliminaTarea(id)
     }
+  }
+
+  const handleCompletar = () => {
+    console.log("id dentro de handleCompletar", id)
+    completarTarea(id)
   }
 
   return (
@@ -20,9 +25,15 @@ const Compleatadas = ({task,eliminaTarea,setTarea}) => {
         <div className='mt-2'>
             <button 
                 className='mr-2'
-                onClick={()=> setTarea(task)}
+                onClick={handleCompletar}
             >
                 <img src="./public/task.svg" alt="" />
+            </button>
+            <button
+                className='mr-2'
+                onClick={()=> setTarea(task)}
+            >
+                <img src="./public/edit.svg" alt="" />
             </button>
             <button
                 onClick={handleEliminar}
