@@ -27,7 +27,7 @@ const Compleatadas = ({task,eliminaTarea,setTarea, completarTarea}) => {
                 className='mr-2'
                 onClick={handleCompletar}
             >
-                <img src="./assets/task.svg" alt="" />
+                <img src="./public/task.svg" alt="" />
             </button>
             <button
                 className='mr-2'
