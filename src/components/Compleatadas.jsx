@@ -1,3 +1,8 @@
+import IconoTask from './../img/task.svg'
+import IconoReset from './../img/reset.svg'
+import IconoEdit from './../img/edit.svg'
+import IconoTrash from './../img/trash.svg'
+
 const Compleatadas = ({task,eliminaTarea,setTarea, completarTarea}) => {
 
   const {nombre, id} = task
@@ -22,24 +27,30 @@ const Compleatadas = ({task,eliminaTarea,setTarea, completarTarea}) => {
                 {nombre}
             </p>
         </div>
-        <div className='mt-2'>
-            <button 
-                className='mr-2'
+        <div className='mt-2 flex'>
+            <img 
+                className='mr-2 cursor-pointer'
+                src={IconoTask}
+                alt="Task Icon"
                 onClick={handleCompletar}
-            >
-                <img src="./public/task.svg" alt="" />
-            </button>
-            <button
-                className='mr-2'
+            />
+            <img 
+                className='mt-2 cursor-pointer'
+                src={IconoEdit}
+                alt="Icono Edit"
                 onClick={()=> setTarea(task)}
-            >
-                <img src="./assets/edit.svg" alt="" />
-            </button>
-            <button
+            />
+            <img 
+                className='mt-2 cursor-pointer'
+                src={IconoTrash}
+                alt=""
+                onClick={handleEliminar}
+            />
+            {/* <button
                 onClick={handleEliminar}
             >
-                <img src="./assets/trash.svg" alt="" />
-            </button>
+                <img src="./../img/trash.svg" alt="" />
+            </button> */}
             {/* <!--
             <button
                 className='bg-blue-400 px-1 text-white rounded uppercase font-semibold hover:bg-blue-500 cursor-pointer mr-2'
