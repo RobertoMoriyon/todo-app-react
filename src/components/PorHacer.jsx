@@ -1,3 +1,5 @@
+import IconoReset from './../img/reset.svg'
+
 const PorHacer = ({tasksCompleted, setTasksCompleted, taskComplete, undoTarea}) => {
 
   const {nombre, id} = taskComplete
@@ -15,11 +17,17 @@ const PorHacer = ({tasksCompleted, setTasksCompleted, taskComplete, undoTarea}) 
             </p>
         </div>
         <div className='mt-2'>
-            <button
+            <img 
+                className='mt-2 cursor-pointer'
+                src={IconoReset}
+                alt="Icono Reset"
+                onClick={handleUndo}
+            />
+            {/* <button
                 onClick={handleUndo}
             >
                 <img src="./assets/reset.svg" alt="" />
-            </button>
+            </button> */}
         </div>
     </div>
   )
